@@ -1,0 +1,29 @@
+{
+	"name": "jbreu/groupsonregistration",
+	"type": "phpbb-extension",
+	"description": "An extension which allows users to join groups during registration.",
+	"homepage": "https://github.com/jbreu",
+	"version": "0.1",
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "mtrs",
+			"username": "mtrs",
+			"role": "Developer"
+		},
+		{
+			"name": "Jakob Breu",
+			"username": "jbreu",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3"
+	},
+	"extra": {
+		"display-name": "Groups on Registration",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.2.0"
+		}
+	}
+}
