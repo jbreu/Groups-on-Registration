@@ -1,47 +1,10 @@
-imports:
-    - { resource: parameters.yml }
-
 services:
-    jbreu.groupsonregistration.controller:
-        class: jbreu\groupsonregistration\controller\main
-        arguments:
-            - '@config'
-            - '@controller.helper'
-            - '@template'
-            - '@user'
-
-    jbreu.groupsonregistration.service:
-        class: jbreu\groupsonregistration\service
-        arguments:
-            - '@user'
-            - '%jbreu.groupsonregistration.tables.demo_table%'
-
     jbreu.groupsonregistration.listener:
-        class: jbreu\groupsonregistration\event\main_listener
+        class: jbreu\groupsonregistration\event\load_groups_listener
         arguments:
-            - '@controller.helper'
             - '@template'
+            - '@dbal.conn'
+            - '@request'
             - '@user'
-            - '%core.php_ext%'
         tags:
             - { name: event.listener }
-
-    jbreu.groupsonregistration.notification.type.demo:
-        class: jbreu\groupsonregistration\notification\type\demo
-        scope: prototype # scope MUST be prototype for this to work!
-        arguments:
-            - '@user_loader'
-            - '@dbal.conn'
-            - '@cache.driver'
-            - '@user'
-            - '@auth'
-            - '@config'
-            - '%core.root_path%'
-            - '%core.php_ext%'
-            - '%tables.notification_types%'
-            - '%tables.notifications%'
-            - '%tables.user_notifications%'
-        calls:
-            - [set_controller_helper, ['@controller.helper']]
-        tags:
-            - { name: notification.type }

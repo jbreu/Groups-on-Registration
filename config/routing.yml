@@ -1,3 +1,0 @@
-jbreu_groupsonregistration_controller:
-    path: /demo/{name}
-    defaults: { _controller: jbreu.groupsonregistration.controller:handle }

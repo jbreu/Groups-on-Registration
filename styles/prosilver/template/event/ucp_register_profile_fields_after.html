@@ -1,0 +1,60 @@
+<dl>
+	<dt>
+		<label for="korpogruppen">Korporation: *</label>
+		<span>
+			Momentan kann nur eine Korporation ausgewählt werde. Weitere können Sie nach Ihrer Registrierung ergänzen. Sollte keine Ihrer Korporationen hier aufgelistet sein, kontaktieren Sie uns bitte.
+		</span>
+	</dt>
+	<dd>
+		<select id="korpogroups" name="korpogroups" size="5">
+			<!-- BEGIN LOADED_GROUPS -->
+			<option value='{LOADED_GROUPS.GROUPID}'>{LOADED_GROUPS.GROUPNAME}</option>
+			<!-- END LOADED_GROUPS -->
+			<option value='8' selected>B! Alemannia Stuttgart</option>
+		</select>
+		<input type="text" id="filter" name="filter" placeholder="Filter" onkeyup="filterItems(this);">
+	<script>var optionsCache = [];
+
+function filterItems(el) {
+  var value = el.value.toLowerCase();
+  var form = el.form;
+  var opt, sel = form.korpogroups;
+  if (value == '') {
+    restoreOptions();
+  } else {
+    // Loop backwards through options as removing them modifies the next
+    // to be visited if go forwards
+    for (var i=sel.options.length-1; i>=0; i--) {
+      opt = sel.options[i];
+      if (opt.text.toLowerCase().indexOf(value) == -1){
+        sel.removeChild(opt)
+      }
+    }
+    if (sel.options.length==1){
+      sel.selectedIndex = sel.options[0];
+    }
+  }
+}
+
+// Restore select to original state
+function restoreOptions(){
+  var sel = document.getElementById('korpogroups');
+  sel.options.length = 0;
+  for (var i=0, iLen=optionsCache.length; i<iLen; i++) {
+    sel.appendChild(optionsCache[i]);
+  }
+}
+
+
+window.onload = function() {
+  // Load cache
+  var sel = document.getElementById('korpogroups');
+  for (var i=0, iLen=sel.options.length; i<iLen; i++) {
+    optionsCache.push(sel.options[i]);
+  }
+} </script>
+
+
+	</dd>
+</dl>	
+
