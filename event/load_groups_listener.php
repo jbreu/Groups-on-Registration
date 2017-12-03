@@ -68,6 +68,9 @@ class load_groups_listener implements EventSubscriberInterface
 	{
 		$this->chosengroupid = $this->request->variable('korpogroups', '');
 		//echo 'cgid: '.$this->chosengroupid."<br />";
+
+		if ($this->chosengroupid == 999999)
+                        $event['error'] = array('Sie haben keine Korporation ausgewählt!');
 	}
 
 	public function user_add_after($event) {

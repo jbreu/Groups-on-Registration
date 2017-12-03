@@ -1,16 +1,16 @@
 <dl>
 	<dt>
-		<label for="korpogruppen">Korporation: *</label>
+		<font color="red"><label for="korpogruppen">Korporation: *</label>
 		<span>
 			Momentan kann nur eine Korporation ausgewählt werde. Weitere können Sie nach Ihrer Registrierung ergänzen. Sollte keine Ihrer Korporationen hier aufgelistet sein, kontaktieren Sie uns bitte.
-		</span>
+		</font></span>
 	</dt>
 	<dd>
-		<select id="korpogroups" name="korpogroups" size="5">
+		<select id="korpogroups" name="korpogroups" size="9">
+			<option value='999999' selected>BITTE EINE KORPORATION AUSWAEHLEN!</option>
 			<!-- BEGIN LOADED_GROUPS -->
 			<option value='{LOADED_GROUPS.GROUPID}'>{LOADED_GROUPS.GROUPNAME}</option>
 			<!-- END LOADED_GROUPS -->
-			<option value='8' selected>B! Alemannia Stuttgart</option>
 		</select>
 		<input type="text" id="filter" name="filter" placeholder="Filter" onkeyup="filterItems(this);">
 	<script>var optionsCache = [];
